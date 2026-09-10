@@ -1,0 +1,8 @@
+{
+  "session_id": "call-003-booking-error",
+  "events": [
+    {"type": "tool.call", "call_id": "call_1", "name": "book_restaurant", "arguments": {"party_size": 4}},
+    {"type": "tool.result", "call_id": "call_1", "result": "restaurant fully booked", "is_error": true},
+    {"type": "transcript.agent", "text": "Great, that's done, your table is booked.", "reply_id": "reply_1", "interrupted": false}
+  ]
+}

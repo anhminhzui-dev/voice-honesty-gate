@@ -1,0 +1,8 @@
+{
+  "session_id": "live-2026-09-09-confirmed-tool-result",
+  "events": [
+    {"type": "tool.call", "call_id": "call_live_1", "name": "book_appointment", "arguments": {"date": "2026-09-15"}},
+    {"type": "tool.result", "call_id": "call_live_1", "result": "{\"status\": \"confirmed\", \"appointment_id\": \"A-4471\"}", "is_error": false},
+    {"type": "transcript.agent", "text": "The appointment has been booked and confirmed. I am done.", "reply_id": "reply_live_1", "interrupted": false}
+  ]
+}

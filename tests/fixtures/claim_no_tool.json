@@ -1,0 +1,7 @@
+{
+  "session_id": "call-002-claim-no-tool",
+  "events": [
+    {"type": "transcript.user", "text": "Can you cancel my flight to Da Nang?", "item_id": "item_1"},
+    {"type": "transcript.agent", "text": "Done, I've cancelled your flight to Da Nang.", "reply_id": "reply_1", "interrupted": false}
+  ]
+}

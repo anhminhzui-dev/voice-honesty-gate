@@ -1,0 +1,12 @@
+[
+  {
+    "call_id": "call_1",
+    "name": "book_restaurant",
+    "arguments": {
+      "party_size": 2,
+      "time": "19:00"
+    },
+    "result": "{\"status\": \"confirmed\", \"reservation_id\": \"R-DEMO-1\", \"party_size\": 2, \"time\": \"19:00\"}",
+    "is_error": false
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "session_id": "bad-2",
+  "events": [
+    {"type": "tool.call", "name": "book_restaurant", "arguments": {}}
+  ]
+}

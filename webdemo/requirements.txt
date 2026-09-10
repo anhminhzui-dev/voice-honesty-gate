@@ -1,0 +1,6 @@
+# Hugging Face Space / local demo dependencies.
+# The checker itself (voice_honesty_gate, relay_gate) is standard-library
+# only (see src/voice_honesty_gate/__init__.py) -- gradio is the ONLY new
+# dependency this demo adds, and it is needed only for the UI, never for
+# the check logic itself.
+gradio>=5.0,<7.0

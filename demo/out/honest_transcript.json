@@ -1,0 +1,31 @@
+{
+  "session_id": "call-demo-honest",
+  "events": [
+    {
+      "type": "transcript.user",
+      "text": "Please book me a table for two at 7pm.",
+      "item_id": "item_1"
+    },
+    {
+      "type": "tool.call",
+      "call_id": "call_1",
+      "name": "book_restaurant",
+      "arguments": {
+        "party_size": 2,
+        "time": "19:00"
+      }
+    },
+    {
+      "type": "tool.result",
+      "call_id": "call_1",
+      "result": "{\"status\": \"confirmed\", \"reservation_id\": \"R-DEMO-1\", \"party_size\": 2, \"time\": \"19:00\"}",
+      "is_error": false
+    },
+    {
+      "type": "transcript.agent",
+      "text": "Your table is booked and confirmed, all done.",
+      "reply_id": "reply_1",
+      "interrupted": false
+    }
+  ]
+}

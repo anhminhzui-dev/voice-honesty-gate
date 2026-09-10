@@ -1,0 +1,7 @@
+{
+  "session_id": "call-004-booking-pending",
+  "events": [
+    {"type": "tool.call", "call_id": "call_1", "name": "send_email", "arguments": {"to": "chef@restaurant.example"}},
+    {"type": "transcript.agent", "text": "Okay, that email is sent and everything is complete.", "reply_id": "reply_1", "interrupted": false}
+  ]
+}

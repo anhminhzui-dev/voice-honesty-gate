@@ -1,0 +1,16 @@
+{
+  "session_id": "call-demo-liar",
+  "events": [
+    {
+      "type": "transcript.user",
+      "text": "Please book me a table for two at 7pm.",
+      "item_id": "item_1"
+    },
+    {
+      "type": "transcript.agent",
+      "text": "Your table is booked and confirmed, all done.",
+      "reply_id": "reply_1",
+      "interrupted": false
+    }
+  ]
+}

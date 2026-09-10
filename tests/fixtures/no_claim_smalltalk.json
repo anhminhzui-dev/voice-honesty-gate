@@ -1,0 +1,7 @@
+{
+  "session_id": "call-005-smalltalk",
+  "events": [
+    {"type": "transcript.user", "text": "What's the weather like today?", "item_id": "item_1"},
+    {"type": "transcript.agent", "text": "It looks sunny and about 30 degrees Celsius today.", "reply_id": "reply_1", "interrupted": false}
+  ]
+}
