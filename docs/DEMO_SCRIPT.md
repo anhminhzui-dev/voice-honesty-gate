@@ -7,7 +7,7 @@ see is more trustworthy than one that claims to see everything."
 
 ## Setup (before the judge is watching)
 
-- Terminal open, `M:/AGENT_VAULT/PORTFOLIO/repos/voice-honesty-gate`
+- Terminal open, this repo's root (`voice-honesty-gate/`)
   current directory.
 - Two saved transcripts staged: `tests/fixtures/booking_success.json`
   (honest — the agent really booked the table) and

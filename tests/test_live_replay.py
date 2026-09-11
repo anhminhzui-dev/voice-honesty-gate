@@ -12,6 +12,7 @@ import os
 
 import voice_honesty_gate  # noqa: F401
 from voice_honesty_gate.cli import main
+from voice_honesty_gate.live_client import DEFAULT_KEY_PATH
 
 FIXTURES = os.path.join(os.path.dirname(__file__), "fixtures")
 LIVE = os.path.join(FIXTURES, "live")
@@ -33,7 +34,7 @@ def test_live_json_carries_no_key_material():
     """The raw AssemblyAI responses saved from the live call must never
     carry the API key -- it only ever goes out in the request header, never
     comes back in a response body (see docs/API_NOTES.md)."""
-    key_path = "M:/AGENT_VAULT/secrets/assemblyai.key"
+    key_path = DEFAULT_KEY_PATH
     if os.path.exists(key_path):
         with open(key_path, "r", encoding="utf-8") as fh:
             key = fh.read().strip()

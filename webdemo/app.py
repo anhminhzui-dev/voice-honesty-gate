@@ -14,9 +14,9 @@ It does not reimplement the check. It reuses, unmodified:
     submit -> poll), the same one `scripts/run_live_call.py` and
     `LIVE_RECEIPT.md`'s live proof used.
   * `voice_honesty_gate.live_client.read_api_key` -- the EXISTING key
-    reader (checks `M:/AGENT_VAULT/secrets/assemblyai.key` by default).
+    reader (checks the `ASSEMBLYAI_KEY_FILE` path by default).
     This app additionally checks the `ASSEMBLYAI_API_KEY` environment
-    variable FIRST, because a Hugging Face Space has no M: drive -- a
+    variable FIRST, because a Hugging Face Space has no persistent disk -- a
     Space secret arrives as an env var, never as a file on disk.
   * `voice_honesty_gate.adapter.events_to_trajectory` -- the EXISTING
     AssemblyAI-event-shape -> relay_gate.schema.Trajectory adapter.

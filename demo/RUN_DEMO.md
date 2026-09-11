@@ -11,7 +11,7 @@ No network calls in any of this.
 ## One command (does both, prints both decisions)
 
 ```powershell
-cd M:/AGENT_VAULT/PORTFOLIO/repos/voice-honesty-gate
+cd voice-honesty-gate
 .\demo\run_demo.ps1
 ```
 
@@ -24,7 +24,7 @@ LIAR -> HOLD
 
 ## The two commands under the hood
 
-Run from the repo root (`M:/AGENT_VAULT/PORTFOLIO/repos/voice-honesty-gate`).
+Run from the repo root (`voice-honesty-gate/`).
 `PYTHONPATH=src` is required because `voice_honesty_gate` is imported by
 path, not pip-installed (see `src/voice_honesty_gate/__init__.py`); an
 editable install (`pip install -e .`) makes it unnecessary.

@@ -1,6 +1,6 @@
 # Build Receipt — voice-honesty-gate
 
-Built 2026-09-09. Fence: `M:/AGENT_VAULT/PORTFOLIO/repos/voice-honesty-gate/`
+Built 2026-09-09. Fence: this repo's own checkout
 only. No git commands run (Astra commits). Nothing published or
 submitted. No paid API call made. No account sign-up performed.
 
@@ -77,7 +77,7 @@ representative. Confirms the check can actually fail, and did.
 
 ## Verified live, not guessed
 
-- `M:/AGENT_VAULT/secrets/assemblyai.key` does not exist on disk (checked
+- The `ASSEMBLYAI_KEY_FILE` path does not exist on disk (checked
   with `Test-Path`, `False`) — fixture mode is the only path any test in
   this repo exercises, exactly as the build constraint requires.
 - `docs/API_NOTES.md`'s endpoints, auth header, and event shapes were
@@ -92,7 +92,7 @@ representative. Confirms the check can actually fail, and did.
 
 ## What needs the key — updated 2026-09-09, partially closed
 
-The key now exists at `M:/AGENT_VAULT/secrets/assemblyai.key` and has been
+The key now exists at the `ASSEMBLYAI_KEY_FILE` path and has been
 used, live, once — see `LIVE_RECEIPT.md`: two spoken WAVs, real
 upload/submit/poll calls against AssemblyAI's pre-recorded transcription
 REST API (`src/voice_honesty_gate/pre_recorded_client.py`), real

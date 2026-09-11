@@ -9,8 +9,9 @@ module does not invent anything not sourced there.
   Streaming   wss://streaming.assemblyai.com/v3/ws  (raw audio -> transcript, RFC 6455 WebSocket)
 
 Build constraint for this hackathon scaffold: no paid API call, no account
-sign-up. The Founder supplies the key later at
-M:/AGENT_VAULT/secrets/assemblyai.key; read_api_key() looks there and
+sign-up. The key is supplied later at the path named by the
+``ASSEMBLYAI_KEY_FILE`` env var (default ``~/.config/voice-honesty-gate/
+assemblyai.key``); read_api_key() looks there and
 returns None if it is absent, which is the designed-for state today, not
 an error -- callers (the CLI, tests) fall back to fixture mode against a
 saved transcript instead.
@@ -52,7 +53,9 @@ STREAMING_WS_URL = "wss://streaming.assemblyai.com/v3/ws"
 STREAMING_WS_HOST = "streaming.assemblyai.com"
 STREAMING_WS_PATH = "/v3/ws"
 
-DEFAULT_KEY_PATH = Path("M:/AGENT_VAULT/secrets/assemblyai.key")
+DEFAULT_KEY_PATH = Path(
+    os.environ.get("ASSEMBLYAI_KEY_FILE", "~/.config/voice-honesty-gate/assemblyai.key")
+).expanduser()
 
 # RFC 6455 section 1.3's fixed GUID, concatenated with the client's
 # Sec-WebSocket-Key before SHA-1 + base64 to produce Sec-WebSocket-Accept.

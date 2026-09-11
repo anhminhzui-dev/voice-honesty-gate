@@ -7,15 +7,15 @@ coding-agent trajectories — from reading a text transcript to reading a
 live AssemblyAI Voice Agent WebSocket transcript. A spoken "done" that no
 tool call backs up gets held, out loud, in the demo.
 
-See `M:/AGENT_VAULT/PORTFOLIO/hackathon/walkthroughs/lablab_assemblyai.md`
-for the door's full case (numbers, kill line, what only the Founder can
+See the build's internal hackathon walkthrough notes (not part of this
+repo) for the door's full case (numbers, kill line, what only the Founder can
 do) and `docs/DEMO_SCRIPT.md` for the 90-second demo this repo runs.
 
 ## Frontier bar
 
 | Line | |
 |---|---|
-| **BEST EXISTING** | relay-gate itself (`M:/AGENT_VAULT/PORTFOLIO/repos/relay-gate/`, this portfolio's own prior work) is the strongest thing that exists for this problem shape: a free, deterministic, offline `FALSE_COMPLETION_CLAIM` rule, README quote, "Does the final claim say the work is done while the last test run shows a failure, or while no test ever ran?" — but it is built and proven only for text coding-agent trajectories (steps come from `Bash`/`PowerShell` tool calls, evidence is a pytest/npm-test output regex). No public tool at the time of this build's search (`M:/AGENT_VAULT/PORTFOLIO/hackathon/walkthroughs/lablab_assemblyai.md`, written 2026-09-09 from the live lablab.ai page) checks a *voice* agent's spoken completion claim against its own tool-call log in real time. |
+| **BEST EXISTING** | [relay-gate](../relay-gate/) itself (this portfolio's own prior work) is the strongest thing that exists for this problem shape: a free, deterministic, offline `FALSE_COMPLETION_CLAIM` rule, README quote, "Does the final claim say the work is done while the last test run shows a failure, or while no test ever ran?" — but it is built and proven only for text coding-agent trajectories (steps come from `Bash`/`PowerShell` tool calls, evidence is a pytest/npm-test output regex). No public tool at the time of this build's search (per this build's internal hackathon walkthrough notes, written 2026-09-09 from the live lablab.ai page) checks a *voice* agent's spoken completion claim against its own tool-call log in real time. |
 | **OUR DELTA** | The same claim-vs-evidence check now runs on a live voice-agent transcript's tool-call events instead of a coding-agent's test-runner output — the evidence source is swapped (a confirmed non-error `tool.result`, not a passing test), not the idea. |
 | **THE MEASUREMENT** | 28 of 28 tests pass on this build's own run (`pytest -q`, `tests/`), including the four required behaviours: a spoken "done" with zero tool-call events fires `FALSE_COMPLETION_CLAIM` (`tests/test_voice_rules.py::test_spoken_done_claim_with_no_tool_run_fires_the_check`), a spoken "done" after a confirmed tool result produces no finding (`test_spoken_done_claim_after_a_real_tool_run_passes`), a malformed transcript raises a typed `MalformedTranscriptError` (`tests/test_adapter.py`, 3 of 3 malformed-input cases), and the coverage report marks the check DEAD when the transcript carries zero tool-call events (`tests/test_coverage.py::test_coverage_dead_when_transcript_carries_no_tool_events`). Zero of these numbers is the check's recall on real human-labelled deception — that measurement (relay-gate's own MAST/AgentRewardBench calibration: 28.6% and 6.25% recall) is inherited unchanged, not re-measured for voice, and is stated as such below. |
 | **SEEN-IT-BEFORE TEST** | A jaded judge's first line: "you just taped a microphone to a text checker." Survives it because the adapter reads AssemblyAI's own documented Voice Agent WebSocket event vocabulary (`tool.call`, `tool.result`, `transcript.agent` — quoted with URLs in `docs/API_NOTES.md`, fetched 2026-09-09, not guessed) and the live-call path (`src/voice_honesty_gate/live_client.py`) is a real RFC 6455 WebSocket client against `wss://streaming.assemblyai.com/v3/ws`, not a stub — its handshake math is checked against RFC 6455's own worked example in `tests/test_live_client.py`. Updated 2026-09-09: a live paid-tier AssemblyAI call now backs this — two spoken WAVs, real upload/transcribe/poll REST calls (`src/voice_honesty_gate/pre_recorded_client.py`, endpoints quoted in `docs/API_NOTES.md`), `vhg check` run on AssemblyAI's own returned text. See `LIVE_RECEIPT.md`. What still does NOT survive the objection, stated plainly: that live call used the pre-recorded transcription product, not the Voice Agent WebSocket session `live_client.py` targets — `connect()`/`iter_frames()` remain unexercised against a real agent session (needs a configured `tools` schema, still unfetched per `docs/API_NOTES.md`). |
@@ -54,7 +54,7 @@ pytest/npm-test-shaped command.
 ## How to run
 
 ```
-cd M:/AGENT_VAULT/PORTFOLIO/repos/voice-honesty-gate
+cd voice-honesty-gate
 pip install -e .            # optional: only needed for the `vhg` console script
 python -m pytest -q         # offline, no key needed (see "Tests" below for the count as of this build's own pass)
 python -m voice_honesty_gate.cli check tests/fixtures/booking_success.json    # -> GO
@@ -113,10 +113,9 @@ checkout as long as `relay-gate/` sits next to this repo under the same
 ## The key file
 
 `live_client.py` and `pre_recorded_client.py` both read an AssemblyAI API
-key from `M:/AGENT_VAULT/secrets/assemblyai.key` (`DEFAULT_KEY_PATH`; pass
-a different `key_path=` if it ever needs to move — no env var needed for
-this one, unlike relay-gate's own `VHG_RELAY_GATE_SRC` wiring in
-`__init__.py`, which is a different path). Updated 2026-09-09: the key now
+key from the path named by the `ASSEMBLYAI_KEY_FILE` env var (default
+`~/.config/voice-honesty-gate/assemblyai.key`; `DEFAULT_KEY_PATH`); pass
+a different `key_path=` if it ever needs to move at call time. Updated 2026-09-09: the key now
 exists at that path, and it has been used once, live, for the pre-recorded
 transcription proof in `LIVE_RECEIPT.md` (8 requests, 10 seconds of audio,
 well inside the session's 10-request/5-minute free-credit budget). Every

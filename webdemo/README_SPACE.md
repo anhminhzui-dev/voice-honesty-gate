@@ -49,10 +49,9 @@ This app is not deployed anywhere yet. When the Founder says go:
    "Variables and secrets" -> "New secret" -> name it exactly
    `ASSEMBLYAI_API_KEY` -> paste the key value (never commit it to any
    file) -> Save. `webdemo/app.py`'s `get_api_key()` reads this
-   environment variable first, before falling back to the repo's own
-   `M:/AGENT_VAULT/secrets/assemblyai.key` file path (which does not exist
-   on the Space's filesystem, by design — the Space never sees that
-   drive).
+   environment variable first, before falling back to the local key-file
+   path named by `ASSEMBLYAI_KEY_FILE` (which does not exist
+   on the Space's filesystem, by design).
 3. **Upload the files.** In the Space's "Files" tab (or via
    `git push`/the `huggingface_hub` Python client), upload, preserving
    this exact relative layout so `webdemo/app.py`'s own `src/` and

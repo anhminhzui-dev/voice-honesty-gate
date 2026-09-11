@@ -27,8 +27,9 @@ if ($LASTEXITCODE -ne 0) {
     python -m pip install -r webdemo/requirements.txt
 }
 
-if (-not (Test-Path "M:/AGENT_VAULT/secrets/assemblyai.key") -and -not $env:ASSEMBLYAI_API_KEY) {
-    Write-Host "NOTE: no AssemblyAI key found (checked ASSEMBLYAI_API_KEY env var and M:/AGENT_VAULT/secrets/assemblyai.key)."
+$KeyFile = if ($env:ASSEMBLYAI_KEY_FILE) { $env:ASSEMBLYAI_KEY_FILE } else { "$HOME/.config/voice-honesty-gate/assemblyai.key" }
+if (-not (Test-Path $KeyFile) -and -not $env:ASSEMBLYAI_API_KEY) {
+    Write-Host "NOTE: no AssemblyAI key found (checked ASSEMBLYAI_API_KEY env var and $KeyFile)."
     Write-Host "      The Run button and example buttons will show an ERROR until one is present."
 }
 

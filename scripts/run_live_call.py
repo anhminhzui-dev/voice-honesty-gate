@@ -2,7 +2,8 @@
 tests/fixtures/live/*.json and LIVE_RECEIPT.md. Not part of the package,
 not imported by any test (the offline replay test reads the saved JSON
 instead) -- this script is the reproducibility record for how that JSON
-was produced, and needs a real key at M:/AGENT_VAULT/secrets/assemblyai.key
+was produced, and needs a real key at the path named by the
+ASSEMBLYAI_KEY_FILE env var (default ~/.config/voice-honesty-gate/assemblyai.key)
 to run again.
 
 Usage: python scripts/run_live_call.py
